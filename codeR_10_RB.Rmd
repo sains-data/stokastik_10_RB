@@ -1,0 +1,54 @@
+---
+title: "Tugas Besar Pemodelan Stokastik: Sistem Antrian"
+author: "Kelompok 10 RB"
+date: "2025-11-13"
+output: html_document
+---
+
+## Kelompok 10 RB
+
+1.  Kartini Lovian Simbolon - 122450003
+
+2.  Deva Anjani Khayyuninafsyah - 122450014
+
+3.  Cyntia Kristina Sidauruk - 122450023
+
+4.  Ratu Keisha Jasmine Deanova - 122450106
+
+```{r}
+# Parameter Sistem Antrian M/M/1
+lambda <- 29  # Tingkat kedatangan (Arrival Rate)
+mu <- 39      # Tingkat pelayanan (Service Rate)
+
+# 1. Jumlah rata-rata pelanggan dalam sistem (Ls)
+Ls <- lambda / (mu - lambda)
+
+# 2. Waktu tunggu rata-rata dalam sistem (Ws)
+Ws <- 1 / (mu - lambda)
+
+# 3. Jumlah rata-rata pelanggan dalam antrian (Lq)
+Lq <- (lambda^2) / (mu * (mu - lambda))
+
+# 4. Waktu tunggu rata-rata dalam antrian (Wq)
+Wq <- lambda / (mu * (mu - lambda))
+
+# 5. Tingkat Kesibukan Sistem (rho)
+# Syarat agar sistem stabil: rho < 1
+rho <- lambda / mu
+
+# 6. Probabilitas bahwa tidak ada pelanggan dalam sistem (P0)
+P0 <- 1 - rho
+
+# Menampilkan Hasil Perhitungan
+cat("=== Hasil Analisis Sistem Antrian M/M/1 ===\n")
+cat(paste("Tingkat Kedatangan (lambda):", lambda, "\n"))
+cat(paste("Tingkat Pelayanan (mu):", mu, "\n"))
+cat("----------------------------------------\n")
+cat(paste("1. Rata-rata Pelanggan di Sistem (Ls):", round(Ls, 4), "\n"))
+cat(paste("2. Rata-rata Waktu di Sistem (Ws):", round(Ws, 4), "\n"))
+cat(paste("3. Rata-rata Pelanggan di Antrian (Lq):", round(Lq, 4), "\n"))
+cat(paste("4. Rata-rata Waktu di Antrian (Wq):", round(Wq, 4), "\n"))
+cat(paste("5. Tingkat Kesibukan Sistem (rho):", round(rho, 4), "\n"))
+cat(paste("6. Probabilitas (P0):", round(P0, 4), "\n"))
+cat("========================================\n")
+```
